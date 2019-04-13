@@ -1,2 +1,2 @@
-# java-calc
-java  practice
+# java-practice
+frist :  java - calc
