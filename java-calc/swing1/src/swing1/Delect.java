@@ -34,7 +34,10 @@ public class Delect implements MouseListener {
                 str[str.length - 1] = "";
                 text1.setText("");
                 for (int i = 0; i < str.length; i++) {
-                    text1.append(str[i] + " ");
+                    if (i>0) {
+                        text1.append(str[i] + " ");
+                    }
+                    
                 }
             } else {
                 String str = text1.getText();

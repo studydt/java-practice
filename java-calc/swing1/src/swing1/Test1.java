@@ -5,9 +5,10 @@ import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ActionEvent;
+import java.lang.*;
 
 /**
- * @author 万水千山
+ * @author 涓囨按鍗冨北
  * @date 2019/04/09
  */
 public class Test1 {
@@ -31,7 +32,7 @@ public class Test1 {
     }
 
     public void Police(JTextArea text1, JButton num) {
-        // 声明事件
+        // 澹版槑浜嬩欢
         Number police = new Number();
         police.set(text1, num);
         num.addMouseListener(police);
@@ -66,10 +67,39 @@ public class Test1 {
         not1.setText(text1, frame);
         btu.addMouseListener(not1);
     }
-    public void menu(JFrame frame,JMenuItem item1) {
-        About about=new About();
+
+    public void menu(JFrame frame, JMenuItem item1) {
+        About about = new About();
         about.set(frame);
         item1.addActionListener(about);
+    }
+    public void SetButton(JTextArea text1,JPanel panel) {
+        JButton[][] btu = new JButton[6][5];
+        String[][] str = {{"%", "\u221A", "x\u00B2", "1/x"}, {"CE", "C", "<-", "梅"}, {"7", "8", "9", "脳"},
+            {"4", "5", "6", "-"}, {"1", "2", "3", "+"}, {"+/-", "0", ".", "="}};
+        for (int i = 0; i <= 5; i++) {
+            for (int k = 0; k <= 3; k++) {
+                btu[i][k] = new JButton(str[i][k]);
+                btu[i][k].setFont(new Font("瀹嬩綋", Font.PLAIN, 45));
+                panel.add(btu[i][k]);
+            }
+        }
+        not(frame, text1, btu[5][0]);
+        result(frame, text1, btu[5][3]);
+        for (int i = 2; i <= 4; i++) {
+            for (int j = 0; j < 3; j++) {
+                Police(text1, btu[i][j]);
+                if(i==2) {
+                delect(text1, btu[1][j]);
+                }
+            }
+        }
+        Police(text1, btu[5][1]);
+        Police(text1, btu[5][2]);
+        for (int i = 0; i < 4; i++) {
+            other(frame, text1, btu[0][i]);
+            Operation(text1, btu[i+1][3]); 
+        }
     }
     /**
      * Create the application.
@@ -102,136 +132,17 @@ public class Test1 {
         panel_big.add(panel);
         panel.setLayout(new GridLayout(6, 4));
 
-        JButton PAH = new JButton("%");
-        PAH.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(PAH);
-
-        JButton devide = new JButton("\u221A");
-        devide.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(devide);
-
-        JButton square = new JButton("x\u00B2");
-        square.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(square);
-
-        JButton fenshu = new JButton("1/x");
-        fenshu.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(fenshu);
-
-        JButton CE = new JButton("CE");
-        CE.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(CE);
-
-        JButton C = new JButton("C");
-        C.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(C);
-
-        JButton delect1 = new JButton("<-");
-        delect1.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(delect1);
-
-        JButton chu = new JButton("\u00F7");
-        chu.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(chu);
-
-        JButton seven = new JButton("7");
-        seven.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(seven);
-
-        JButton eight = new JButton("8");
-        eight.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(eight);
-
-        JButton nine = new JButton("9");
-        nine.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(nine);
-
-        JButton cheng = new JButton("\u00D7");
-        cheng.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(cheng);
-
-        JButton four = new JButton("4");
-        four.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(four);
-
-        JButton five = new JButton("5");
-        five.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(five);
-
-        JButton six = new JButton("6");
-        six.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(six);
-
-        JButton jian = new JButton("-");
-        jian.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(jian);
-
-        JButton one = new JButton("1");
-        one.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(one);
-
-        JButton two = new JButton("2");
-        two.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(two);
-
-        JButton three = new JButton("3");
-        three.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(three);
-
-        JButton jia = new JButton("+");
-        jia.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(jia);
-
-        JButton zhengfu = new JButton("+/-");
-        zhengfu.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(zhengfu);
-
-        JButton zero = new JButton("0");
-        zero.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(zero);
-
-        JButton point = new JButton(".");
-        point.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(point);
-
-        JButton result2 = new JButton("=");
-        result2.setFont(new Font("宋体", Font.PLAIN, 45));
-        panel.add(result2);
-        
-        other(frame, text1, PAH);
-        other(frame, text1, devide);
-        other(frame, text1, square);
-        other(frame, text1, fenshu);
-        delect(text1, CE);
-        delect(text1, C);
-        delect(text1, delect1);
-        Operation(text1, chu);
-        Police(text1, seven);
-        Police(text1, eight);
-        Police(text1, nine);
-        Operation(text1, cheng);
-        Police(text1, four);
-        Police(text1, five);
-        Police(text1, six);
-        Operation(text1, jian);
-        Police(text1, one);
-        Police(text1, two);
-        Police(text1, three);
-        Operation(text1, jia);
-        not(frame, text1, zhengfu);
-        Police(text1, zero);
-        Police(text1, point);
-        result(frame, text1, result2);
-        
         JMenuBar menuBar = new JMenuBar();
         frame.getContentPane().add(menuBar, BorderLayout.NORTH);
-        
+
         JMenu mnNewMenu = new JMenu("Help");
         menuBar.add(mnNewMenu);
-        
+
         JMenuItem mntmNewMenuItem = new JMenuItem("About");
         mnNewMenu.add(mntmNewMenuItem);
         menu(frame, mntmNewMenuItem);
+        
+        SetButton(text1, panel);
     }
 
 }
