@@ -38,14 +38,20 @@ public class Delect implements MouseListener {
                 }
             } else {
                 String str = text1.getText();
-                str = str.substring(0, str.length() - 1);
-                text1.setText(str);
+                int a = str.length() - 1;
+                str = str.substring(0, a);
+                    text1.setText(str);
             }
         } catch (Exception e) {
             // TODO: handle exception
         }
 
     }
+
+    /**
+     * @param lastIndexOf
+     * @return
+     */
 
     /* £¨·Ç Javadoc£©
      * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
