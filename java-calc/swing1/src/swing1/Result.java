@@ -2,6 +2,10 @@ package swing1;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -14,10 +18,12 @@ import javax.swing.JTextArea;
 public class Result implements MouseListener {
     JTextArea text1;
     JFrame frame;
-
-    public void setText(JTextArea text1, JFrame frame) {
+    File file;
+    String RESULT;
+    public void setText(JTextArea text1, JFrame frame, File file) {
         this.text1 = text1;
         this.frame = frame;
+        this.file = file;
     }
 
     /* （非 Javadoc）
@@ -30,6 +36,7 @@ public class Result implements MouseListener {
         double sum = 0;
         int number = 0;
         try {
+            RESULT=text1.getText();
             String[] str = text1.getText().split(" ");
             number = str.length;
             sum = 0;
@@ -71,6 +78,19 @@ public class Result implements MouseListener {
                 text1.setText(str[0]);
             } else {
                 text1.setText(Double.toString(sum));
+            }
+            try {
+                String resultString = text1.getText();
+                FileWriter out = new FileWriter(file,true);
+                BufferedWriter out2 = new BufferedWriter(out);
+                out2.write(RESULT+" = "+resultString);
+                out2.newLine();
+                out2.close();
+                out.close();
+                
+            } catch (IOException e2) {
+                // TODO: handle exception
+                JOptionPane.showMessageDialog(frame, "警告:无法写入历史记录", "警告", JOptionPane.WARNING_MESSAGE);
             }
 
         } catch (Exception e2) {

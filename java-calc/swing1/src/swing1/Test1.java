@@ -1,11 +1,11 @@
 package swing1;
 
 import java.awt.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.swing.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ActionEvent;
-import java.lang.*;
 
 /**
  * @author 万水千山
@@ -44,9 +44,9 @@ public class Test1 {
         operation.addMouseListener(operation2);
     }
 
-    public void result(JFrame frame, JTextArea text1, JButton btu) {
+    public void result(JFrame frame, JTextArea text1, JButton btu, File file) {
         Result result1 = new Result();
-        result1.setText(text1, frame);
+        result1.setText(text1, frame, file);
         btu.addMouseListener(result1);
     }
 
@@ -73,7 +73,14 @@ public class Test1 {
         about.set(frame);
         item1.addActionListener(about);
     }
-    public void SetButton(JTextArea text1,JPanel panel) {
+
+    public void menu1(JFrame frame, JMenu menu,File file) {
+        History history = new History();
+        history.set(frame,file);
+        menu.addMenuListener(history);
+    }
+
+    public void SetButton(JTextArea text1, JPanel panel, File file) {
         JButton[][] btu = new JButton[6][5];
         String[][] str = {{"%", "\u221A", "x\u00B2", "1/x"}, {"CE", "C", "<-", "÷"}, {"7", "8", "9", "×"},
             {"4", "5", "6", "-"}, {"1", "2", "3", "+"}, {"+/-", "0", ".", "="}};
@@ -85,12 +92,12 @@ public class Test1 {
             }
         }
         not(frame, text1, btu[5][0]);
-        result(frame, text1, btu[5][3]);
+        result(frame, text1, btu[5][3], file);
         for (int i = 2; i <= 4; i++) {
             for (int j = 0; j < 3; j++) {
                 Police(text1, btu[i][j]);
-                if(i==2) {
-                delect(text1, btu[1][j]);
+                if (i == 2) {
+                    delect(text1, btu[1][j]);
                 }
             }
         }
@@ -98,23 +105,28 @@ public class Test1 {
         Police(text1, btu[5][2]);
         for (int i = 0; i < 4; i++) {
             other(frame, text1, btu[0][i]);
-            Operation(text1, btu[i+1][3]); 
+            Operation(text1, btu[i + 1][3]);
         }
     }
+
     /**
      * Create the application.
+     * 
+     * @throws IOException
      */
-    public Test1() {
+    public Test1() throws IOException {
         initialize();
     }
 
     /**
      * Initialize the contents of the frame.
+     * 
+     * @throws IOException
      */
-    private void initialize() {
+    private void initialize() throws IOException {
         frame = new JFrame();
 
-        frame.setBounds(100, 100, 570, 669);
+        frame.setBounds(100, 100, 461, 669);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Panel panel_big = new Panel();
@@ -124,9 +136,12 @@ public class Test1 {
         JTextArea text1 = new JTextArea();
         text1.setAlignmentX(Component.LEFT_ALIGNMENT);
         text1.setAlignmentY(Component.BOTTOM_ALIGNMENT);
-        panel_big.add(text1, BorderLayout.NORTH);
+        JScrollPane jsp1 = new JScrollPane(text1);
+        jsp1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        jsp1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         text1.setFont(new Font("Monospaced", Font.PLAIN, 55));
-
+        panel_big.add(jsp1, BorderLayout.NORTH);
+        
         JPanel panel = new JPanel();
         panel.setAlignmentY(Component.TOP_ALIGNMENT);
         panel_big.add(panel);
@@ -134,6 +149,15 @@ public class Test1 {
 
         JMenuBar menuBar = new JMenuBar();
         frame.getContentPane().add(menuBar, BorderLayout.NORTH);
+        
+        File file = new File("history.txt");
+        @SuppressWarnings("resource")
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write("");
+        
+        JMenu mnNewMenu_1 = new JMenu("History");
+        menuBar.add(mnNewMenu_1);
+        menu1(frame, mnNewMenu_1,file);
 
         JMenu mnNewMenu = new JMenu("Help");
         menuBar.add(mnNewMenu);
@@ -141,8 +165,10 @@ public class Test1 {
         JMenuItem mntmNewMenuItem = new JMenuItem("About");
         mnNewMenu.add(mntmNewMenuItem);
         menu(frame, mntmNewMenuItem);
-        
-        SetButton(text1, panel);
+
+
+        SetButton(text1, panel, file);
+
     }
 
 }
