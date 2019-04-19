@@ -14,7 +14,7 @@ import javax.swing.*;
 public class Test1 {
 
     private JFrame frame;
-
+    public JButton[][] btu = new JButton[6][5];
     /**
      * Launch the application.
      */
@@ -74,14 +74,20 @@ public class Test1 {
         item1.addActionListener(about);
     }
 
-    public void menu1(JFrame frame, JMenu menu,File file) {
+    public void menu1(JFrame frame, JMenu menu, File file) {
         History history = new History();
-        history.set(frame,file);
+        history.set(frame, file);
         menu.addMenuListener(history);
     }
 
+    public void menu2(JFrame frame, JMenu menu, JButton btu[][],JTextArea text1) {
+        COLOR cOLOR = new COLOR();
+        cOLOR.set(frame,btu,text1);
+        menu.addMenuListener(cOLOR);
+    }
+
     public void SetButton(JTextArea text1, JPanel panel, File file) {
-        JButton[][] btu = new JButton[6][5];
+        
         String[][] str = {{"%", "\u221A", "x\u00B2", "1/x"}, {"CE", "C", "<-", "÷"}, {"7", "8", "9", "×"},
             {"4", "5", "6", "-"}, {"1", "2", "3", "+"}, {"+/-", "0", ".", "="}};
         for (int i = 0; i <= 5; i++) {
@@ -141,7 +147,7 @@ public class Test1 {
         jsp1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         text1.setFont(new Font("Monospaced", Font.PLAIN, 55));
         panel_big.add(jsp1, BorderLayout.NORTH);
-        
+
         JPanel panel = new JPanel();
         panel.setAlignmentY(Component.TOP_ALIGNMENT);
         panel_big.add(panel);
@@ -149,16 +155,22 @@ public class Test1 {
 
         JMenuBar menuBar = new JMenuBar();
         frame.getContentPane().add(menuBar, BorderLayout.NORTH);
-        
+
         File file = new File("history.txt");
         @SuppressWarnings("resource")
         FileWriter fileWriter = new FileWriter(file);
         fileWriter.write("");
         
+        SetButton(text1, panel, file);
+        
         JMenu mnNewMenu_1 = new JMenu("History");
         menuBar.add(mnNewMenu_1);
-        menu1(frame, mnNewMenu_1,file);
+        menu1(frame, mnNewMenu_1, file);
 
+        JMenu mnColor = new JMenu("color");
+        menuBar.add(mnColor);
+        menu2(frame, mnColor,btu,text1);
+        
         JMenu mnNewMenu = new JMenu("Help");
         menuBar.add(mnNewMenu);
 
@@ -166,8 +178,7 @@ public class Test1 {
         mnNewMenu.add(mntmNewMenuItem);
         menu(frame, mntmNewMenuItem);
 
-
-        SetButton(text1, panel, file);
+        
 
     }
 
