@@ -85,7 +85,10 @@ public class Test1 {
         cOLOR.set(frame,btu,text1);
         menu.addMenuListener(cOLOR);
     }
-
+    public void menu3(JMenuItem menu) {
+        Quit quit = new Quit();
+        menu.addActionListener(quit);
+    }
     public void SetButton(JTextArea text1, JPanel panel, File file) {
         
         String[][] str = {{"%", "\u221A", "x\u00B2", "1/x"}, {"CE", "C", "<-", "÷"}, {"7", "8", "9", "×"},
@@ -162,6 +165,15 @@ public class Test1 {
         fileWriter.write("");
         
         SetButton(text1, panel, file);
+        
+        JMenu mnNewMenu_3 = new JMenu("menu");
+        menuBar.add(mnNewMenu_3);
+
+        
+        JMenuItem mntmQuit = new JMenuItem("quit");
+        mnNewMenu_3.add(mntmQuit);
+        mntmQuit.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E , java.awt.event.KeyEvent.CTRL_MASK));
+        menu3(mntmQuit);
         
         JMenu mnNewMenu_1 = new JMenu("History");
         menuBar.add(mnNewMenu_1);
