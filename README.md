@@ -1,2 +1,4 @@
 # java-practice
-frist :  java - calc
+
+1. java - calc
+2. java - students_system
