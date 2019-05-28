@@ -43,15 +43,10 @@ public class System {
     private JTextField textField_1_2;
     private JTextField textField_2_1;
     private JTextField textField_2_2;
-    private JTable table;
     private JTextField textField_3_1;
     private JTextField textField_3_2;
     private JTextField textField_3_3;
     private JTextField textField_3_4;
-    private JTextField textField_3_5;
-    private JTextField textField_3_6;
-    private JTextField textField_3_7;
-    private JTextField textField_3_8;
 
     /**
      * Launch the application.
@@ -236,21 +231,6 @@ public class System {
         textField_3_1.setBounds(156, 63, 113, 27);
         panel_3.add(textField_3_1);
 
-        textField_3_2 = new JTextField();
-        textField_3_2.setColumns(10);
-        textField_3_2.setBounds(295, 63, 113, 27);
-        panel_3.add(textField_3_2);
-
-        textField_3_3 = new JTextField();
-        textField_3_3.setColumns(10);
-        textField_3_3.setBounds(440, 64, 113, 27);
-        panel_3.add(textField_3_3);
-
-        textField_3_4 = new JTextField();
-        textField_3_4.setColumns(10);
-        textField_3_4.setBounds(584, 64, 113, 27);
-        panel_3.add(textField_3_4);
-
         JLabel label_17 = new JLabel("\u65E7\u5B66\u751F\u6570\u636E");
         label_17.setBounds(36, 67, 90, 18);
         panel_3.add(label_17);
@@ -260,63 +240,38 @@ public class System {
         label_18.setBounds(177, 32, 72, 18);
         panel_3.add(label_18);
 
-        JLabel label_19 = new JLabel("\u59D3\u540D");
-        label_19.setHorizontalAlignment(SwingConstants.CENTER);
-        label_19.setBounds(320, 32, 72, 18);
-        panel_3.add(label_19);
+        textField_3_2 = new JTextField();
+        textField_3_2.setColumns(10);
+        textField_3_2.setBounds(159, 164, 113, 27);
+        panel_3.add(textField_3_2);
 
-        JLabel label_20 = new JLabel("\u4E13\u4E1A");
-        label_20.setHorizontalAlignment(SwingConstants.CENTER);
-        label_20.setBounds(464, 33, 72, 18);
-        panel_3.add(label_20);
+        textField_3_3 = new JTextField();
+        textField_3_3.setColumns(10);
+        textField_3_3.setBounds(304, 165, 113, 27);
+        panel_3.add(textField_3_3);
 
-        JLabel label_21 = new JLabel("\u73ED\u7EA7");
-        label_21.setHorizontalAlignment(SwingConstants.CENTER);
-        label_21.setBounds(606, 32, 72, 18);
-        panel_3.add(label_21);
-
-        textField_3_5 = new JTextField();
-        textField_3_5.setColumns(10);
-        textField_3_5.setBounds(158, 163, 113, 27);
-        panel_3.add(textField_3_5);
-
-        textField_3_6 = new JTextField();
-        textField_3_6.setColumns(10);
-        textField_3_6.setBounds(297, 163, 113, 27);
-        panel_3.add(textField_3_6);
-
-        textField_3_7 = new JTextField();
-        textField_3_7.setColumns(10);
-        textField_3_7.setBounds(442, 164, 113, 27);
-        panel_3.add(textField_3_7);
-
-        textField_3_8 = new JTextField();
-        textField_3_8.setColumns(10);
-        textField_3_8.setBounds(586, 164, 113, 27);
-        panel_3.add(textField_3_8);
+        textField_3_4 = new JTextField();
+        textField_3_4.setColumns(10);
+        textField_3_4.setBounds(448, 165, 113, 27);
+        panel_3.add(textField_3_4);
 
         JLabel label_22 = new JLabel("\u65B0\u5B66\u751F\u6570\u636E");
         label_22.setBounds(38, 167, 90, 18);
         panel_3.add(label_22);
 
-        JLabel label_23 = new JLabel("\u5B66\u53F7");
-        label_23.setHorizontalAlignment(SwingConstants.CENTER);
-        label_23.setBounds(175, 126, 72, 18);
-        panel_3.add(label_23);
-
         JLabel label_24 = new JLabel("\u59D3\u540D");
         label_24.setHorizontalAlignment(SwingConstants.CENTER);
-        label_24.setBounds(318, 126, 72, 18);
+        label_24.setBounds(180, 127, 72, 18);
         panel_3.add(label_24);
 
         JLabel label_25 = new JLabel("\u4E13\u4E1A");
         label_25.setHorizontalAlignment(SwingConstants.CENTER);
-        label_25.setBounds(462, 127, 72, 18);
+        label_25.setBounds(324, 128, 72, 18);
         panel_3.add(label_25);
 
         JLabel label_26 = new JLabel("\u73ED\u7EA7");
         label_26.setHorizontalAlignment(SwingConstants.CENTER);
-        label_26.setBounds(604, 126, 72, 18);
+        label_26.setBounds(466, 127, 72, 18);
         panel_3.add(label_26);
 
         JLabel label_27 = new JLabel("\u6CE8\u610F: \u82E5\u4E3A\u7A7A, \u5219\u4E0D\u8FDB\u884C\u66F4\u65B0");
@@ -327,6 +282,7 @@ public class System {
         addActionListener(mysql, frame, textField, textField_1, textField_2, textField_3, button);
         addActionListener2(mysql, frame, textField_1_1, textField_1_2, button_1, text);
         addActionListener2(mysql, frame, textField_2_1, textField_2_2, button_2, text);
+        addActionListener3(mysql, frame, textField_3_1, textField_3_2,textField_3_3,textField_3_4, button_3);
     }
 
     public void addActionListener(Mysql mysql, JFrame frame, JTextField text1, JTextField text2, JTextField text3,
@@ -338,7 +294,7 @@ public class System {
                 String text_3 = text3.getText();
                 String text_4 = text4.getText();
                 if (text_1.equals("") || text_2.equals("") || text_3.equals("") || text_4.equals("")) {
-                    JOptionPane.showMessageDialog(frame, "Â²Â»Ã„ÃœÃŽÂªÂ¿Ã•");
+                    JOptionPane.showMessageDialog(frame, "²»ÄÜÎª¿Õ");
                 } else {
                     ADD add = new ADD(mysql, frame, text_1, text_2, text_3, text_4);
                 }
@@ -355,9 +311,9 @@ public class System {
                 String text_2 = text2.getText();
                 // TODO Auto-generated method stub
                 if (text_1.equals("") && text_2.equals("")) {
-                    JOptionPane.showMessageDialog(frame, "Â²Â»Ã„ÃœÃˆÂ«Â²Â¿ÃŽÂªÂ¿Ã•");
+                    JOptionPane.showMessageDialog(frame, "²»ÄÜ¶¼Îª¿Õ");
                 } else {
-                    if (button.getText().equals("Ã‰Â¾Â³Ã½")) {
+                    if (button.getText().equals("É¾³ý")) {
                         DELECT delect = new DELECT(mysql, frame, text_1, text_2);
                     }else {
                         WHERE where =new WHERE(mysql, frame, text_1, text_2,text);
@@ -365,6 +321,22 @@ public class System {
                     
                 }
 
+            }
+        });
+    }
+    public void addActionListener3(Mysql mysql, JFrame frame, JTextField text1, JTextField text2, JTextField text3,
+        JTextField text4, JButton button) {
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                String text_1 = text1.getText();
+                String text_2 = text2.getText();
+                String text_3 = text3.getText();
+                String text_4 = text4.getText();
+                if (text_1.equals("")) {
+                    JOptionPane.showMessageDialog(frame, "²»ÄÜÎª¿Õ");
+                } else {
+                    UPDATE update = new UPDATE(mysql, frame, text_1, text_2, text_3, text_4);
+                }
             }
         });
     }

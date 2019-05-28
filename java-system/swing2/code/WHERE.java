@@ -1,11 +1,7 @@
  package swing2;
 
 import java.sql.ResultSet;
-import java.util.Vector;
-
 import javax.swing.JFrame;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;

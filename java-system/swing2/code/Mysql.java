@@ -23,7 +23,7 @@ public class Mysql {
     public ResultSet post(Integer a, String s) throws SQLException {
         try {
             if (a == 1) {
-                sqlStatement.execute(s);
+                 sqlStatement.execute(s);
                 JOptionPane.showMessageDialog(frame, "²Ù×÷³É¹¦", "mysql", JOptionPane.INFORMATION_MESSAGE);
             } else if (a == 2) {
                 resultset = sqlStatement.executeQuery(s);
