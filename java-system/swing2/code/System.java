@@ -29,7 +29,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
 /**
- * @author 万水千山
+ * @author 脥貌脣庐脟搂脡陆
  * @date 2019/05/24
  */
 public class System {
@@ -338,7 +338,7 @@ public class System {
                 String text_3 = text3.getText();
                 String text_4 = text4.getText();
                 if (text_1.equals("") || text_2.equals("") || text_3.equals("") || text_4.equals("")) {
-                    JOptionPane.showMessageDialog(frame, "不能为空");
+                    JOptionPane.showMessageDialog(frame, "虏禄脛脺脦陋驴脮");
                 } else {
                     ADD add = new ADD(mysql, frame, text_1, text_2, text_3, text_4);
                 }
@@ -355,9 +355,9 @@ public class System {
                 String text_2 = text2.getText();
                 // TODO Auto-generated method stub
                 if (text_1.equals("") && text_2.equals("")) {
-                    JOptionPane.showMessageDialog(frame, "不能全部为空");
+                    JOptionPane.showMessageDialog(frame, "虏禄脛脺脠芦虏驴脦陋驴脮");
                 } else {
-                    if (button.getText().equals("删除")) {
+                    if (button.getText().equals("脡戮鲁媒")) {
                         DELECT delect = new DELECT(mysql, frame, text_1, text_2);
                     }else {
                         WHERE where =new WHERE(mysql, frame, text_1, text_2,text);
